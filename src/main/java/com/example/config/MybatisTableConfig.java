@@ -1,29 +1,34 @@
 package com.example.config;
 
-import com.example.util.PropertyUtil;
-import org.apache.commons.dbcp.BasicDataSource;
+import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.stereotype.Component;
 
 /**
  * @author 徐森威
  * @date 2017/11/14
  */
 @Configuration
-@PropertySource("classpath:/application.properties")
-@Component
 @ComponentScan(basePackages = {"com.gitee.sunchenbin.mybatis.actable.manager.*"})
-public class TestConfig {
+public class MybatisTableConfig {
+
+    @Value("${spring.datasource.driver-class-name}")
+    private String driver;
+
+    @Value("${spring.datasource.url}")
+    private String url;
+
+    @Value("${spring.datasource.username}")
+    private String username;
+
+    @Value("${spring.datasource.password}")
+    private String password;
 
     @Bean
     public PropertiesFactoryBean configProperties() throws Exception{
@@ -34,12 +39,14 @@ public class TestConfig {
     }
 
     @Bean
-    public BasicDataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(PropertyUtil.getProperty("db.jdbc.driverClassName"));
-        dataSource.setUrl(PropertyUtil.getProperty("db.jdbc.url"));
-        dataSource.setUsername(PropertyUtil.getProperty("db.jdbc.username"));
-        dataSource.setPassword(PropertyUtil.getProperty("db.jdbc.password"));
+    public DruidDataSource dataSource() {
+        DruidDataSource dataSource = new DruidDataSource();
+        dataSource.setDriverClassName(driver);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        dataSource.setMaxActive(30);
+        dataSource.setInitialSize(10);
         dataSource.setValidationQuery("SELECT 1");
         dataSource.setTestOnBorrow(true);
         return dataSource;
@@ -60,14 +67,6 @@ public class TestConfig {
         sqlSessionFactoryBean.setMapperLocations(resolver.getResources("classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml"));
         sqlSessionFactoryBean.setTypeAliasesPackage("com.example.entity.*");
         return sqlSessionFactoryBean;
-    }
-
-    @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() throws Exception{
-        MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("com.example.mapper.*;com.gitee.sunchenbin.mybatis.actable.dao.*");
-        mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
-        return mapperScannerConfigurer;
     }
 
 }
