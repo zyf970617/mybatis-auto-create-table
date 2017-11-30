@@ -50,8 +50,6 @@ public PropertiesFactoryBean configProperties() throws Exception{
 ```
 如果你改成了只用`yml`，则需要修改如上配置文件，改成注入`yml`
 
-最后，建议刚使用的时候，先克隆这个Demo跑一遍，里面代码不多，理解之后再整合到自己的项目中
-
-
+最后，建议刚使用的时候，先克隆这个Demo跑一遍，里面代码不多，理解之后再整合到自己的项目中，对这个包的具体使用，可以参见原作者的文章http://blog.csdn.net/sun5769675/article/details/74779640 或者我扩展的文章 http://www.jianshu.com/p/25db002b0367 ，主要就是配置文件和实体层的使用（这个框架还提供了通用增删改查，因为我用了其他的框架来实现这个功能，所以就不展开了）
 
 
