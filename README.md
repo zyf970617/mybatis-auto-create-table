@@ -164,7 +164,9 @@ JSON(0, null, null);
 ("char", MySqlTypeConstant.VARCHAR)
 ```
 4. 支持表引擎、字符集、表注释等等，详见`MySqlCharsetConstant`和`MySqlEngineConstant`
-5. 自己扩展其实也比较方便，后面有时间出一版自己扩展的
+5. 自己扩展其实也比较方便，后面有时间出一版怎么自己扩展的教程~
+
+> 其他细节信息有需要可以看原作者的文档，感谢开源~
 
 
 
