@@ -105,9 +105,66 @@ public class UserLogin {
 }
 ```
 
-###
-
-
+### 其他
+1. 该框架有一个`BaseCRUD`，可以直接用这个也可以用其他的`mybatis-plus`之类的框架
+2. 目前支持使用的MySQL类型如下
+```java
+DEFAULT(null,null,null),
+INT(1, 11, null),
+VARCHAR(1, 255, null),
+BINARY(1, 1, null),
+CHAR(1, 255, null),
+BIGINT(1, 20, null),
+BIT(1, 1, null),
+TINYINT(1, 4, null),
+SMALLINT(1, 6, null),
+MEDIUMINT(1, 9, null),
+DECIMAL(2, 10, 2),
+DOUBLE(2, 10, 2),
+TEXT(0, null, null),
+MEDIUMTEXT(0, null, null),
+LONGTEXT(0, null, null),
+DATETIME(0, null, null),
+TIMESTAMP(0, null, null),
+DATE(0, null, null),
+TIME(0, null, null),
+FLOAT(2, 10, 2),
+YEAR(0, null, null),
+BLOB(0, null, null),
+LONGBLOB(0, null, null),
+MEDIUMBLOB(0, null, null),
+TINYTEXT(0, null, null),
+TINYBLOB(0, null, null),
+JSON(0, null, null);
+```
+3. Java类型自动转换为MySQL类型的转换方案如下（X,Y），即为X转换为Y
+```java
+("class java.lang.String", MySqlTypeConstant.VARCHAR)
+("class java.lang.Long", MySqlTypeConstant.BIGINT)
+("class java.lang.Integer", MySqlTypeConstant.INT)
+("class java.lang.Boolean", MySqlTypeConstant.BIT)
+("class java.math.BigInteger", MySqlTypeConstant.BIGINT)
+("class java.lang.Float", MySqlTypeConstant.FLOAT)
+("class java.lang.Double", MySqlTypeConstant.DOUBLE)
+("class java.math.BigDecimal", MySqlTypeConstant.DECIMAL)
+("class java.sql.Date", MySqlTypeConstant.DATE)
+("class java.util.Date", MySqlTypeConstant.DATE)
+("class java.sql.Timestamp", MySqlTypeConstant.DATETIME)
+("class java.sql.Time", MySqlTypeConstant.TIME)
+("class java.time.LocalDateTime", MySqlTypeConstant.DATETIME)
+("class java.time.LocalDate", MySqlTypeConstant.DATE)
+("class java.time.LocalTime", MySqlTypeConstant.TIME)
+("long", MySqlTypeConstant.BIGINT)
+("int", MySqlTypeConstant.INT)
+("boolean", MySqlTypeConstant.BIT)
+("float", MySqlTypeConstant.FLOAT)
+("double", MySqlTypeConstant.DOUBLE)
+("byte", MySqlTypeConstant.TINYINT)
+("short", MySqlTypeConstant.SMALLINT)
+("char", MySqlTypeConstant.VARCHAR)
+```
+4. 支持表引擎、字符集、表注释等等，详见`MySqlCharsetConstant`和`MySqlEngineConstant`
+5. 自己扩展其实也比较方便，后面有时间出一版自己扩展的
 
 
 
