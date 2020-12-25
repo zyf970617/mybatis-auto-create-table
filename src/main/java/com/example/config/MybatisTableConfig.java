@@ -31,14 +31,6 @@ public class MybatisTableConfig {
     private String password;
 
     @Bean
-    public PropertiesFactoryBean configProperties() throws Exception{
-        PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        propertiesFactoryBean.setLocations(resolver.getResources("classpath*:application.properties"));
-        return propertiesFactoryBean;
-    }
-
-    @Bean
     public DruidDataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(driver);

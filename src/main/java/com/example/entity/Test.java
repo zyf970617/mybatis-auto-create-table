@@ -7,16 +7,25 @@ import com.gitee.sunchenbin.mybatis.actable.constants.MySqlTypeConstant;
 
 import java.sql.Date;
 
+/**
+ * 第一种定义方式，使用@Table和@Column方式定义
+ *
+ * @author 徐森威
+ * @date 2020/12/24
+ */
 @Table(name = "test")
-public class Test extends BaseModel{
+public class Test extends BaseModel {
 
 	private static final long serialVersionUID = 5199200306752426433L;
 
 	@Column(name = "id",type = MySqlTypeConstant.INT,length = 11,isKey = true,isAutoIncrement = true)
 	private Integer	id;
 
-	@Column(name = "name",type = MySqlTypeConstant.VARCHAR,length = 111)
+	@Column(name = "name",type = MySqlTypeConstant.VARCHAR, length = 45, defaultValue = "hello")
 	private String	name;
+
+	@Column(name = "type",type = MySqlTypeConstant.VARCHAR,length = 45)
+	private String	type;
 
 	@Column(name = "description",type = MySqlTypeConstant.TEXT)
 	private String	description;
@@ -100,4 +109,11 @@ public class Test extends BaseModel{
 		this.dekes = dekes;
 	}
 
+	public String getType() {
+		return this.type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }
