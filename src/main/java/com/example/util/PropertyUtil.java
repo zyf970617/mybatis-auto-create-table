@@ -6,10 +6,6 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.Properties;
 
-/**
- * @auther 徐森威
- * @date 2017/11/14
- */
 public class PropertyUtil {
 
     private static final Logger logger = LoggerFactory.getLogger(PropertyUtil.class);
