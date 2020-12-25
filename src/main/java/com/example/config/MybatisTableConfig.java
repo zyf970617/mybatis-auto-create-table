@@ -3,7 +3,6 @@ package com.example.config;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +13,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
  * @author 徐森威
  * @date 2017/11/14
  */
+
 @Configuration
 @ComponentScan(basePackages = {"com.gitee.sunchenbin.mybatis.actable.manager.*"})
 public class MybatisTableConfig {

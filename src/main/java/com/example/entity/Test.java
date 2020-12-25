@@ -16,8 +16,6 @@ import java.sql.Date;
 @Table(name = "test")
 public class Test extends BaseModel {
 
-	private static final long serialVersionUID = 5199200306752426433L;
-
 	@Column(name = "id",type = MySqlTypeConstant.INT,length = 11,isKey = true,isAutoIncrement = true)
 	private Integer	id;
 

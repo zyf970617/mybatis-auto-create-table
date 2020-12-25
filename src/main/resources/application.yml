@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf8&useSSL=false&autoReconnect=true
     username: root
-    password: XXXXX
+    password: XXXXXX
 
 server:
   port: 8080
