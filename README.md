@@ -1,5 +1,5 @@
 # mybatis-auto-create-table
-这是`SpringBoot`整合`Mybatis`进行自动创建数据表的简单Demo（目前仅支持`mysql`）
+这是`SpringBoot`整合`Mybatis`进行自动创建数据表的简单Demo（目前仅支持`mysql`）。原简书地址：https://www.jianshu.com/p/25db002b0367
 
 这个包的使用，原作者只提供了SpringMvc的使用demo，所以我整合了一份SpringBoot版本的mybatis自动创建表（全注解形式），使用时，需要添加`pom`文件中的关键包
 ```xml
